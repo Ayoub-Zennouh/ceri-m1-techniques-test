@@ -1,3 +1,9 @@
+<h3>ZENNOUH AYOUB</h3>
+
+<h3>GROUPE 1 ILSEN<h3/>
+
+[![codecov](https://codecov.io/gh/Ayoub-Zennouh/ceri-m1-techniques-test/branch/master/graph/badge.svg?token=DX6OA1TIY7)](https://codecov.io/gh/Ayoub-Zennouh/ceri-m1-techniques-test) [![CircleCI](https://circleci.com/gh/Ayoub-Zennouh/ceri-m1-techniques-test/tree/master.svg?style=svg)](https://circleci.com/gh/Ayoub-Zennouh/ceri-m1-techniques-test/tree/master)
+
 # UCE Génie Logiciel Avancé : Techniques de tests
 
 ## Introduction
