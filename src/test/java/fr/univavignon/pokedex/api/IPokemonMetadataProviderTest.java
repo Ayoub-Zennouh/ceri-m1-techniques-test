@@ -5,37 +5,30 @@ import static org.junit.Assert.assertThrows;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
 public class IPokemonMetadataProviderTest {
+	
+	IPokemonMetadataProvider pokemonMetadataProvider;
+	PokemonMetadata metadata;
+	
+	@Before 
+	public void initialize() {
+		pokemonMetadataProvider = new PokemonMetadataProvider();
+	}
 
 	@Test
 	public void getPokemonMetadataTest() throws PokedexException{
-		PokemonMetadata pokemonMetadata1 = new PokemonMetadata(0, "Bulbizarre", 126, 126, 90);
-		PokemonMetadata pokemonMetadata2 = new PokemonMetadata(133, "Aquali", 186, 168, 260);
-		IPokemonMetadataProvider pokemonMetadataProvider = Mockito.mock(IPokemonMetadataProvider.class);
-		
-		when(pokemonMetadataProvider.getPokemonMetadata(0)).thenReturn(pokemonMetadata1);
-		when(pokemonMetadataProvider.getPokemonMetadata(133)).thenReturn(pokemonMetadata2);
-		when(pokemonMetadataProvider.getPokemonMetadata(anyInt())).thenAnswer(new Answer<PokemonMetadata>(){
-			@Override
-			public PokemonMetadata answer(InvocationOnMock invocation) throws PokedexException {
-				int index = invocation.getArgument(0);
-				if(index == 0)
-					return pokemonMetadata1;
-				else if(index == 133)
-					return pokemonMetadata2;
-				else if(index < 0 || index > 150)
-					throw new PokedexException("Invalid pokemon index");
-				return null;
-			}
-		});
+		metadata = pokemonMetadataProvider.getPokemonMetadata(0);
 
-		assertEquals(pokemonMetadata1, pokemonMetadataProvider.getPokemonMetadata(0));
-		assertEquals(pokemonMetadata2, pokemonMetadataProvider.getPokemonMetadata(133));
+		assertEquals("Bulbizarre", metadata.getName());
+		assertEquals(126, metadata.getAttack());
+		assertEquals(126, metadata.getDefense());
+		assertEquals(90, metadata.getStamina());
 		assertThrows(PokedexException.class, () -> pokemonMetadataProvider.getPokemonMetadata(-1));
 	}
 }

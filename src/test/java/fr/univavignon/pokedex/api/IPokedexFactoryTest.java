@@ -1,28 +1,22 @@
 package fr.univavignon.pokedex.api;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
-import org.mockito.Mockito;
 
 public class IPokedexFactoryTest {
 	
 	@Test
 	public void createPokedexTest() {
 		
-		IPokemonMetadataProvider metadataProvider = Mockito.mock(IPokemonMetadataProvider.class);
+		IPokemonMetadataProvider metadataProvider = new PokemonMetadataProvider();
 		
-		IPokemonFactory pokemonFactory = Mockito.mock(IPokemonFactory.class);
+		IPokemonFactory pokemonFactory = new PokemonFactory();
 		
-		IPokedexFactory pokedexFactory = Mockito.mock(IPokedexFactory.class);
+		IPokedexFactory pokedexFactory = new PokedexFactory();
 		
-		IPokedex pokedex = Mockito.mock(IPokedex.class);
 		
-		when(pokedexFactory.createPokedex(metadataProvider, pokemonFactory)).thenReturn(pokedex);
-		
-		assertEquals(pokedex, pokedexFactory.createPokedex(metadataProvider, pokemonFactory));
-		
+		assertNotNull(pokedexFactory.createPokedex(metadataProvider, pokemonFactory));
 	}
 
 }

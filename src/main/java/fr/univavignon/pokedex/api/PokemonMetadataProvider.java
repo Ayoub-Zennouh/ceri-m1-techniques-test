@@ -1,12 +1,14 @@
 package fr.univavignon.pokedex.api;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PokemonMetadataProvider implements IPokemonMetadataProvider {
 	
-	ArrayList<PokemonMetadata> pokemonMetadata;
+	List<PokemonMetadata> pokemonMetadata;
 	
 	public PokemonMetadataProvider() {
+		pokemonMetadata = new ArrayList<PokemonMetadata>();
 		pokemonMetadata.add(new PokemonMetadata(0, "Bulbizarre", 126, 126, 90));
 		pokemonMetadata.add(new PokemonMetadata(133, "Aquali", 186, 168, 260));
 	}
