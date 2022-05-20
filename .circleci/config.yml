@@ -29,6 +29,9 @@ jobs:
       - run:
           name: Test
           command: mvn test
+      - run:
+          name: Checkstyle
+          command: mvn checkstyle:checkstyle
       - codecov/upload:
           token: codecov_upload_token
 
