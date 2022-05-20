@@ -30,8 +30,8 @@ jobs:
           name: Test
           command: mvn test
       - run:
-          name: Checkstyle
-          command: mvn checkstyle:checkstyle
+          name: gitpush
+          command: git add .
       - codecov/upload:
           token: codecov_upload_token
 
