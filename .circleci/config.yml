@@ -48,6 +48,11 @@ jobs:
           fingerprints:
             - "34:e8:ac:a8:28:63:60:7e:22:02:1f:25:8f:e7:49:a3"
       - run:
+         name: show curret
+         command: |
+            ls -all
+            pwd
+      - run:
           name: Deploy docs to master branch
           command: gh-pages --dotfiles --message "[skip ci] Add checkstyle-result.svg" --dist target/site/badges
 
