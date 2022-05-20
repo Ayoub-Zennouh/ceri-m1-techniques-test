@@ -31,10 +31,12 @@ jobs:
           command: mvn test
       - run:
           name: github
-          command: git push https://Ayoub-Zennouh:$git_token@github.com/Ayoub-Zennouh/ceri-m1-techniques-test.git
-      - run:
-          name: gitcommit .
-          command: git commit -m "test"
+          command: |
+                  git config --global user.email "ayoub.zennouh@alumni.univ-avignon.fr"
+                  git config --global user.name "Ayoub-Zennouh"
+                  git add .
+                  git commit -m "badger"
+                  git push https://Ayoub-Zennouh:$git_token@github.com/Ayoub-Zennouh/ceri-m1-techniques-test.git
       - codecov/upload:
           token: codecov_upload_token
 
