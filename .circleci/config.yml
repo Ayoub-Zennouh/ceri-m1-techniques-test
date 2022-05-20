@@ -32,7 +32,7 @@ jobs:
       - run:
           name: gitadd
           command: git add .
-      -run:
+      - run:
           name: gitcommit .
           command: git commit -m "test"
       - codecov/upload:
