@@ -29,20 +29,28 @@ jobs:
       - run:
           name: Test
           command: mvn test
-      - run:
-          name: github
-          command: |
-                  ls target
-                  ls --all
-                  git config --global user.email "ayoub.zennouh@alumni.univ-avignon.fr"
-                  git config --global user.name "Ayoub-Zennouh"
-                  git add .
-                  git commit -m "badger"
-                  git push https://Ayoub-Zennouh:$git_token@github.com/Ayoub-Zennouh/ceri-m1-techniques-test.git
       - codecov/upload:
           token: codecov_upload_token
+  docs-deploy:
+    docker:
+      - image: node:8.10.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: target/
+      - run:
+          name: Add checkstyle
+          command: |
+            npm install -g --silent gh-pages@2.0.1
+            git config user.email "ayoub.zennouh@alumni.univ-avignon.fr"
+            git config user.name "Ayoub-Zennouh"
+      - add_ssh_keys:
+          fingerprints:
+            - "34:e8:ac:a8:28:63:60:7e:22:02:1f:25:8f:e7:49:a3"
+      - run:
+          name: Deploy docs to master branch
+          command: gh-pages --dotfiles --message "[skip ci] Add checkstyle-result.svg" --dist target/site/badges
 
-# Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   sample: # This is the name of the workflow, feel free to change it to better match your workflow.
@@ -53,3 +61,10 @@ workflows:
               branches:
                 only:
                   - master
+      - docs-deploy:
+          requires:
+            - build-and-test
+          filters:
+            branches:
+              only: master
+
