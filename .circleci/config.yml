@@ -34,7 +34,7 @@ jobs:
           command: git add .
       -run:
           name: gitcommit .
-          command: git commit -m 'test'
+          command: git commit -m "test"
       - codecov/upload:
           token: codecov_upload_token
 
