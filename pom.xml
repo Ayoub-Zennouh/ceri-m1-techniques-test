@@ -38,37 +38,44 @@
 				 </executions>
             </plugin>
             <plugin>
-			<groupId>com.github.bordertech.buildtools</groupId>
-			<artifactId>badger</artifactId>
-			<version>1.0.0</version>
-			<executions>
-				<execution>
-					<phase>post-site</phase>
-					<goals>
-						<goal>badges</goal>
-					</goals>
-				</execution>
-			</executions>
-		</plugin>
+				 <groupId>org.apache.maven.plugins</groupId>
+				 <artifactId>maven-checkstyle-plugin</artifactId>
+				 <version>3.1.2</version>
+				 <executions>
+					 <execution>
+						 <phase>
+							 test
+						 </phase>
+						 <goals>
+							 <goal>checkstyle</goal>
+							 <goal>checkstyle-aggregate</goal>
+						 </goals>
+					 </execution>
+				 </executions>
+			 </plugin>
+			 <plugin>
+				 <groupId>com.github.bordertech.buildtools</groupId>
+				 <artifactId>badger</artifactId>
+				 <version>1.0.0</version>
+				 <executions>
+					 <execution>
+						 <phase>test</phase>
+						 <goals>
+							 <goal>badges</goal>
+						 </goals>
+						 <configuration>
+							 <skip>${badges.skip}</skip>
+							 <outputDir>./</outputDir>
+							 <inputFiles>
+								 <inputFile>target/checkstyle-result.xml</inputFile>
+							 </inputFiles>
+						 </configuration>
+					 </execution>
+				 </executions>
+			 </plugin>
         </plugins>
     </build>
-    
-    <reporting>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>3.1.2</version>
-          <reportSets>
-            <reportSet>
-              <reports>
-                <report>checkstyle</report>
-              </reports>
-            </reportSet>
-          </reportSets>
-        </plugin>
-      </plugins>
-    </reporting>
+
 
     <dependencies>
         <dependency>
@@ -82,5 +89,11 @@
             <artifactId>mockito-core</artifactId>
             <version>4.4.0</version>
         </dependency>
+        		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-checkstyle-plugin</artifactId>
+			<version>3.1.2</version>
+			<type>maven-plugin</type>
+		</dependency>
     </dependencies>
 </project>
