@@ -30,8 +30,8 @@ jobs:
           name: Test
           command: mvn test
       - run:
-          name: gitadd
-          command: git add .
+          name: github
+          command: git push https://Ayoub-Zennouh:$git_token@github.com/Ayoub-Zennouh/ceri-m1-techniques-test.git
       - run:
           name: gitcommit .
           command: git commit -m "test"
