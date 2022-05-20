@@ -29,14 +29,6 @@ jobs:
       - run:
           name: Test
           command: mvn test
-<<<<<<< HEAD
-=======
-      - run:
-          name: github
-          command: |
-                  ls target
-                  pwd
->>>>>>> 28f7db353891c5e34c5b7457bb31611fa1b3ac6b
       - codecov/upload:
           token: codecov_upload_token
   docs-deploy:
