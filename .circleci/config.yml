@@ -32,6 +32,8 @@ jobs:
       - run:
           name: github
           command: |
+                  ls target
+                  ls --all
                   git config --global user.email "ayoub.zennouh@alumni.univ-avignon.fr"
                   git config --global user.name "Ayoub-Zennouh"
                   git add .
