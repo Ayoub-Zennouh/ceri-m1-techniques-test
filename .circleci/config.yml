@@ -50,7 +50,7 @@ jobs:
       - run:
          name: show curret
          command: |
-            ls -all
+            ls target/ -all
             pwd
       - run:
           name: Deploy docs to master branch
