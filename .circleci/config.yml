@@ -32,7 +32,7 @@ jobs:
       - codecov/upload:
           token: codecov_upload_token
       - persist_to_workspace:
-          root: /
+          root: ./
           paths: site
   docs-deploy:
     docker:
