@@ -32,7 +32,7 @@ jobs:
       - codecov/upload:
           token: codecov_upload_token
       - persist_to_workspace:
-          root: ./
+          root: target/
           paths: site
   docs-deploy:
     docker:
@@ -50,11 +50,6 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "d6:ae:f5:e2:8b:a4:9c:22:9d:41:8b:9a:dd:09:34:ea"
-      - run:
-         name: show curret
-         command: |
-            ls target/site -all
-            pwd
       - run:
           name: Deploy docs to master branch
           command: gh-pages --add --dotfiles --message "[skip ci] add docs" --dist target/site --branch master
