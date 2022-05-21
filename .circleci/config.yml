@@ -52,7 +52,9 @@ jobs:
             - "d6:ae:f5:e2:8b:a4:9c:22:9d:41:8b:9a:dd:09:34:ea"
       - run:
           name: Deploy docs to master branch
-          command: gh-pages --add --dotfiles --message "[skip ci] add docs" --dist target/site --branch master
+          command: |
+                  gh-pages --add --dotfiles --message "[skip ci] add docs" --dist target/site/apidocs
+                  gh-pages --add --dotfiles --message "[skip ci] add checkstyle-result.svg" --dist target/site/badges --branch master
 
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
