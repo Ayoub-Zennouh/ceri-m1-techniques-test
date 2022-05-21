@@ -53,7 +53,7 @@ jobs:
       - run:
           name: Deploy docs to master branch
           command: |
-                  gh-pages --add --dotfiles --message "[skip ci] add docs" --dist target/site/apidocs
+                  gh-pages --dotfiles --message "[skip ci] add docs" --dist target/site/apidocs
 
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
