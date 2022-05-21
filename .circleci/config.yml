@@ -33,12 +33,7 @@ jobs:
           name: github
           command: |
                   ls target
-                  ls --all
-                  git config --global user.email "ayoub.zennouh@alumni.univ-avignon.fr"
-                  git config --global user.name "Ayoub-Zennouh"
-                  git add .
-                  git commit -m "badger"
-                  git push https://Ayoub-Zennouh:$git_token@github.com/Ayoub-Zennouh/ceri-m1-techniques-test.git
+                  pwd
       - codecov/upload:
           token: codecov_upload_token
 
