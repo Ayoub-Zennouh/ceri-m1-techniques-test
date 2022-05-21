@@ -1,17 +1,18 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-
-    <groupId>fr.univavignon.pokedex.api</groupId>
-    <artifactId>tp-technique-test</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-
-    <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
-    </properties>
-    
-    <reporting>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	 <modelVersion>4.0.0</modelVersion>
+	 <groupId>fr.univ-avignon.tt</groupId>
+	 <artifactId>java-project</artifactId>
+	 <version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+	</properties>
+	<name>java-project</name>
+	<url>http://univ-avignon.fr</url>
+	<reporting>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -27,37 +28,12 @@
 			</plugin>
 		</plugins>
 	</reporting>
-
-    <build>
-    <defaultGoal>
+	<build>
+		<defaultGoal>
 			clean test checkstyle:checkstyle
 		</defaultGoal>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
-            </plugin>
-            <plugin>
-                <groupId>org.jacoco</groupId>
-				 <artifactId>jacoco-maven-plugin</artifactId>
-				 <version>0.8.8</version>
-				 <executions>
-					 <execution>
-						 <goals>
-							 <goal>prepare-agent</goal>
-						 </goals>
-					 </execution>
-					 <execution>
-						 <id>report</id>
-						 <phase>test</phase>
-						 <goals>
-							 <goal>report</goal>
-						 </goals>
-					 </execution>
-				 </executions>
-            </plugin>
-            <plugin>
+		 <plugins>
+			 <plugin>
 				 <groupId>org.apache.maven.plugins</groupId>
 				 <artifactId>maven-checkstyle-plugin</artifactId>
 				 <version>3.1.2</version>
@@ -85,7 +61,7 @@
 						 </goals>
 						 <configuration>
 							 <skip>${badges.skip}</skip>
-							 <outputDir>target/site/badges/</outputDir>
+							 <outputDir>./</outputDir>
 							 <inputFiles>
 								 <inputFile>target/checkstyle-result.xml</inputFile>
 							 </inputFiles>
@@ -94,56 +70,73 @@
 				 </executions>
 			 </plugin>
 			 <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.3.2</version>
-                <executions>
-					<execution>
-						<id>id.javadoc</id>
-						<phase>compile</phase>
-						<goals>
-							<goal>javadoc</goal>
-						</goals>
-						<configuration>
-
-						</configuration>
-					</execution>
-
-				</executions>
-                <configuration>
-                    <source>8</source>
-                    <detectJavaApiLink>false</detectJavaApiLink>
-                    <show>private</show>
-                    <nohelp>true</nohelp>
-                    <outputDirectory>target/site/javadoc</outputDirectory>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
-
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>4.4.0</version>
-        </dependency>
-        		<dependency>
+				 <groupId>org.apache.maven.plugins</groupId>
+				 <artifactId>maven-compiler-plugin</artifactId>
+				 <version>3.10.1</version>
+			 </plugin>
+			 <plugin>
+				 <artifactId>maven-surefire-plugin</artifactId>
+				 <version>2.22.0</version>
+				 <configuration>
+					 <testFailureIgnore>true</testFailureIgnore>
+				 </configuration>
+			 </plugin>
+			 <plugin>
+				 <groupId>org.jacoco</groupId>
+				 <artifactId>jacoco-maven-plugin</artifactId>
+				 <version>0.8.8</version>
+				 <executions>
+					 <execution>
+						 <goals>
+							 <goal>prepare-agent</goal>
+						 </goals>
+					 </execution>
+					 <execution>
+						 <id>report</id>
+						 <phase>test</phase>
+						 <goals>
+							 <goal>report</goal>
+						 </goals>
+					 </execution>
+				 </executions>
+			 </plugin>
+			 <plugin>
+				 <groupId>org.apache.maven.plugins</groupId>
+				 <artifactId>maven-javadoc-plugin</artifactId>
+				 <version>3.4.0</version>
+				 <configuration>
+					 <doclint>none</doclint>
+				 </configuration>
+			 </plugin>
+		 </plugins>
+	</build>
+	<dependencies>
+		 <dependency>
+			 <groupId>org.junit.jupiter</groupId>
+			 <artifactId>junit-jupiter-api</artifactId>
+			 <version>5.8.2</version>
+			 <scope>test</scope>
+		 </dependency>
+		 <dependency>
+			 <groupId>org.mockito</groupId>
+			 <artifactId>mockito-core</artifactId>
+			 <version>4.5.1</version>
+		 </dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.8.2</version>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-checkstyle-plugin</artifactId>
 			<version>3.1.2</version>
 			<type>maven-plugin</type>
 		</dependency>
 		<dependency>
-	<groupId>org.apache.commons</groupId>
-	<artifactId>commons-collections4</artifactId>
-	<version>4.0</version>
-</dependency>
-    </dependencies>
+			<groupId>org.apache.maven.doxia</groupId>
+			<artifactId>doxia-site-renderer</artifactId>
+			<version>1.9.2</version>
+		</dependency>
+	</dependencies>
 </project>
