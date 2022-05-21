@@ -31,6 +31,9 @@ jobs:
           command: mvn test
       - codecov/upload:
           token: codecov_upload_token
+      - persist_to_workspace:
+          root: target/
+          paths: site
   docs-deploy:
     docker:
       - image: node:8.10.0
@@ -54,7 +57,7 @@ jobs:
             pwd
       - run:
           name: Deploy docs to master branch
-          command: gh-pages --dotfiles --message "[skip ci] Add checkstyle-result.svg" --dist target/site/badges
+          command: gh-pages --dotfiles --message "[skip ci] add docs" --dist target/site
 
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:

@@ -73,6 +73,31 @@
 					 </execution>
 				 </executions>
 			 </plugin>
+			 <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.3.2</version>
+                <executions>
+					<execution>
+						<id>id.javadoc</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>javadoc</goal>
+						</goals>
+						<configuration>
+
+						</configuration>
+					</execution>
+
+				</executions>
+                <configuration>
+                    <source>8</source>
+                    <detectJavaApiLink>false</detectJavaApiLink>
+                    <show>private</show>
+                    <nohelp>true</nohelp>
+                    <outputDirectory>target/site/javadoc</outputDirectory>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
