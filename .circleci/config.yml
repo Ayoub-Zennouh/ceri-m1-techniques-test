@@ -32,7 +32,7 @@ jobs:
       - codecov/upload:
           token: codecov_upload_token
       - persist_to_workspace:
-          root: target/
+          root: /
           paths: site
   docs-deploy:
     docker:
@@ -57,7 +57,7 @@ jobs:
             pwd
       - run:
           name: Deploy docs to master branch
-          command: gh-pages --dotfiles --message "[skip ci] add docs" --dist target/site
+          command: gh-pages --add --dotfiles --message "[skip ci] add docs" --dist target/site --branch master
 
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
